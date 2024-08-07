@@ -10,7 +10,50 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="m-3">
+   <h1>Form Data Mata Pelajaran</h1>
+   
+     <form class="mb-3">
+       <div class="mb-3">
+         <label class="form-label">Hari</label>
+         <input type="text" class="form-control" id="input-hari">
+       </div>
+          <div class="mb-3">
+         <label class="form-label">Jam</label>
+         <input type="text" class="form-control" id="input-jam">
+       </div>
+          <div class="mb-3">
+            <label class="form-label">Waktu</label>
+            <input type="text" class="form-control" id="input-waktu">
+          </div>
+        <div class="mb-3">
+          <label class="form-label">Kelas</label>
+          <input type="text" class="form-control" id="input-kelas">
+        </div>
+  <div class="mb-3">
+          <label class="form-label">Mapel</label>
+          <input type="text" class="form-control" id="input-mapel">
+        </div>
+  <div class="mb-3">
+          <label class="form-label">Guru Mapel</label>
+          <input type="text" class="form-control" id="input-guruMapel">
+        </div>
+       <button type="submit" class="btn btn-primary" id="tombol-ubah">Ubah</button>
+     </form>
+     
+  <script type="module">
+    import { ambilDaftarJadwalMataPelajaran, ubahDaftarJadwalMataPelajaran } from './main.js';
+    let tombolUbah = document.getElementById('tombol-ubah');
+    let elemenHari = document.getElementById('input-hari');
+    let elemenJam = document.getElementById('input-jam');
+    let elemenWaktu = document.getElementById('input-waktu');
+    let elemenKelas = document.getElementById('input-kelas');
+    let elemenMapel = document.getElementById('input-mapel');
+    let elemenGuruMapel = document.getElementById('input-guruMapel');
+    const queryString = window.location.search
+    const parameterURL = new URLSearchParams(queryString);
+    const docId = parameterURL.get('docId')
+    const jadwal - mapel = await ambilDaftarJadwalMataPelajaran(docId);
 
 </body>
 

@@ -21,3 +21,22 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+export async function ambilDaftarJadwalMataPelajaran() {
+  const refDokumen = collection(db, "jadwal-mapel");
+  const kueri = query(refDokumen, orderBy("hari"));
+  const cuplikanKueri = await getDocs(kueri);
+  let hasil = [];
+  cuplikanKueri.forEach((dok) => {
+    hasil.push({
+      id: dok.id,
+      hari: dok.data().hari,
+      jam: dok.data().jam,
+      waktu: dok.data().waktu,
+      kelas: dok.data().kelas,
+      mapel: dok.data().mapel,
+      guruMapel: dok.data().guruMapel,
+    });
+  });
+  return hasil;
+}
