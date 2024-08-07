@@ -22,7 +22,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export async function ambilDaftarJadwalMataPelajaran() {
+export async function ambilDaftarMapel() {
   const refDokumen = collection(db, "jadwal-mapel");
   const kueri = query(refDokumen, orderBy("hari"));
   const cuplikanKueri = await getDocs(kueri);
@@ -40,7 +40,7 @@ export async function ambilDaftarJadwalMataPelajaran() {
   });
   return hasil;
 }
-export async function tambahDaftarJadwalMataPelajaran(hari, jam, waktu, kelas, mapel, guruMapel) {
+export async function tambahJadwalMapel(hari, jam, waktu, kelas, mapel, guruMapel) {
   try {
     const dokRef = await addDoc(collection(db, 'jadwal-mapel'), {
       hari: hari,
@@ -59,10 +59,10 @@ export async function tambahDaftarJadwalMataPelajaran(hari, jam, waktu, kelas, m
 
 }
 
-export async function hapusDaftarJadwalMataPelajaran(docId) {
+export async function hapusJadwalMapel(docId) {
   await deleteDoc(doc(db, "jadwal-mapel", docId));
 }
-export async function ubahDaftarJadwalMataPelajaran(docId, hari, jam, waktu, kelas, mapel, guruMapel) {
+export async function ubahJadwalMapel(docId, hari, jam, waktu, kelas, mapel, guruMapel) {
   await updateDoc(doc(db, "jadwal-mapel", docId), {
     hari: hari,
     jam: jam,
@@ -74,7 +74,7 @@ export async function ubahDaftarJadwalMataPelajaran(docId, hari, jam, waktu, kel
   });
 }
 
-export async function ambilDaftarJadwalMataPelajaran(docId) {
+export async function ambilDaftarMapel(docId) {
   const docRef = await doc(db, "jadwal-mapel", docId);
   const docSnap = await getDoc(docRef);
 

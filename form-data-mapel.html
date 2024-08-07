@@ -28,8 +28,13 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Kelas</label>
-      <input type="text" class="form-control" id="input-kelas">
     </div>
+    <select class="form-select" aria-label="Default select example">
+      <option value="1">X</option>
+      <option value="2">XI</option>
+      <option value="3">XII</option>
+    </select>
+    
     <div class="mb-3">
       <label class="form-label">Mapel</label>
       <input type="text" class="form-control" id="input-mapel">
@@ -43,7 +48,7 @@
 
   <a href="index.html">Daftar Data Jadwal Pelajaran</a>
   <script type="module">
-    import { tambahDaftarJadwalMataPelajaran } from './main.js';
+    import { tambahJadwalMapel } from './main.js';
   
     let tombolTambah = document.getElementById('tombol-tambah');
     let elemenHari = document.getElementById('input-hari');
@@ -55,7 +60,7 @@
     
     tombolTambah.addEventListener('click', async function(e) {
       e.preventDefault();
-      await tambahDaftarJadwalMataPelajaram(elemenHari.value, elemenJam.value, elemenWaktu.value, elemenKelas.value, elemenMapel.value, elemenguruMapel.value );
+      await tambahJadwalMapel(elemenHari.value, elemenJam.value, elemenWaktu.value, elemenKelas.value, elemenMapel.value, elemenguruMapel.value );
       window.location.href = 'index.html'
     })
   </script>
