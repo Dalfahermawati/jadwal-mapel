@@ -74,7 +74,7 @@ export async function ubahJadwalMapel(docId, hari, jam, waktu, kelas, mapel, gur
   });
 }
 
-export async function ambilDaftarMapel(docId) {
+export async function ambilMapel(docId) {
   const docRef = await doc(db, "jadwal-mapel", docId);
   const docSnap = await getDoc(docRef);
 

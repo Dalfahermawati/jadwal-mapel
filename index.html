@@ -61,11 +61,11 @@
    <img src="loader.gif" style="width: 15em; display: block" id="loader">
    <a href="form-data-mapel.html">tambah data jadwal mata pelajaran</a>
    <script type="module">
-     import { ambilJadwalMapel,  hapusJadwalMapel } from './main.js';
+     import { ambilDaftarMapel,  hapusJadwalMapel } from './main.js';
      
      $(document).ready(async function() {
              let elemenDaftar = $("#daftar-jadwal-mapel > tbody");
-             let daftarJadwalMapel = await ambilJadwalMapel();
+             let daftarMapel = await ambilDaftarMapel();
              let nomor = 1;
              daftar-jadwal-mapel.forEach((data) => {
                elemenDaftar.append(
