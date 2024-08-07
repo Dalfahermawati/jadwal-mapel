@@ -40,3 +40,43 @@ export async function ambilDaftarJadwalMataPelajaran() {
   });
   return hasil;
 }
+export async function tambahDaftarJadwalMataPelajaran(hari, jam, waktu, kelas, mapel, guruMapel) {
+  try {
+    const dokRef = await addDoc(collection(db, 'jadwal-mapel'), {
+      hari: hari,
+      jam: jam,
+      waktu: waktu,
+      kelas: kelas,
+      mapel: mapel,
+      guruMapel: guruMapel,
+    });
+    console.log('berhasil menambah jadwal mapel ' + dokRef.id);
+  }
+
+  catch (e) {
+    console.log('gagal menambah jadwal mapel ' + e);
+  }
+
+}
+
+export async function hapusDaftarJadwalMataPelajaran(docId) {
+  await deleteDoc(doc(db, "jadwal-mapel", docId));
+}
+export async function ubahDaftarJadwalMataPelajaran(docId, hari, jam, waktu, kelas, mapel, guruMapel) {
+  await updateDoc(doc(db, "jadwal-mapel", docId), {
+    hari: hari,
+    jam: jam,
+    waktu: waktu,
+    kelas: kelas,
+    mapel: mapel,
+    guruMapel: guruMapel,
+
+  });
+}
+
+export async function ambilDaftarJadwalMataPelajaran(docId) {
+  const docRef = await doc(db, "jadwal-mapel", docId);
+  const docSnap = await getDoc(docRef);
+
+  return await docSnap.data();
+}

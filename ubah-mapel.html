@@ -54,6 +54,34 @@
     const parameterURL = new URLSearchParams(queryString);
     const docId = parameterURL.get('docId')
     const jadwal - mapel = await ambilDaftarJadwalMataPelajaran(docId);
+    
+    elemenHari.value = absensi.hari;
+    elemenJam.value = absensi.jam;
+    elemenWaktu.value = absensi.waktu;
+    elemenKelas.value = absensi.kelas;
+    elemenMapel.value = absensi.mapel;
+    elemenGuruMapel.value = absensi.guruMapel;
+    tombolUbah.addEventListener('click ', async function(el) {
+      el.preventDefault();
+    
+      await ubahDaftarJadwalMataPelajaran(docId,
+        elemenHari.value,
+        elemenJam.value,
+        elemenWaktu.value,
+        elemenKelas.value,
+        elemenMapel.value,
+        elemenGuruMapel.value);
+      window.location.href = 'index.html';
+    });
+    </script>
+
+         <footer class="py-3 bg-dark-subtle mt-auto">
+           <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+             <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Beranda</a></li>
+             <li class="nav-item"><a href="form-data-mapel.html" class="nav-link px-2 text-body-secondary">Tambah Data</a></li>
+           </ul>
+           <p class="text-center text-body-secondary">&copy; 2024 Insan Cemerlang</p>
+         </footer>
 
 </body>
 

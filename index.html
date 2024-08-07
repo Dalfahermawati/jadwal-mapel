@@ -57,6 +57,47 @@
     <tbody>
     </tbody>
   </table>
-  <script src="config.js"></script>
+  
+   <img src="loader.gif" style="width: 15em; display: block" id="loader">
+   <a href="form-data-mapel.html">tambah data jadwal mata pelajaran</a>
+   <script type="module">
+     import { ambilDaftarJadwalMataPelajaran,  hapusDaftarJadwalMataPelajaran } from './main.js';
+     
+     $(document).ready(async function() {
+             let elemenDaftar = $("#daftar-jadwal-mapel > tbody");
+             let daftarJadwalMataPelajaran = await ambilDaftarJadwalMataPelajaran();
+             let nomor = 1;
+             daftar - jadwal - mapel.forEach((data) => {
+               elemenDaftar.append(
+                 '<tr>' +
+                 '<th>' + nomor + '</th>' +
+                 '<td>' + data.hari + '</td>' +
+                 '<td>' + data.jam + '</td>' +
+                 '<td>' + data.waktu + '</td>' +
+                 '<td>' + data.kelas + '</td>' +
+                 '<td>' + data.mapel + '</td>' +
+                 '<td>' + data.guruMapel + '</td>' +
+                 ' <a href="#" class="me-2 link-ubah" data="' +
+                 data.id +
+                 '">ubah</a> ' +
+                 ' <button class="btn btn-danger tombol-hapus" data="' +
+                 data.id +
+                 '">Hapus</button>' + '</td>' +
+                 '</tr>'
+               );
+               nomor = nomor + 1;
+             });
+    $('.tombol-hapus').click(async function() {
+      await hapusDaftarJadwalMataPelajaran($(this).attr('data'));
+      location.reload();
+    })
+    
+    $('.link-ubah').click(async function() {
+      window.location.replace('ubah-mapel.html?docId=' + $(this).attr('data'));
+    })
+    
+    $('#loader').hide();
+    }); 
+    </script>
 </body>
 </html>

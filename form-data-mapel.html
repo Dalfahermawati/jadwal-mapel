@@ -42,6 +42,23 @@
   </form>
 
   <a href="index.html">Daftar Data Jadwal Pelajaran</a>
+  <script type="module">
+    import { tambahDaftarJadwalMataPelajaran } from './main.js';
+  
+    let tombolTambah = document.getElementById('tombol-tambah');
+    let elemenHari = document.getElementById('input-hari');
+    let elemenJam = document.getElementById('input-jam');
+    let elemenWaktu = document.getElementById('input-waktu');
+    let elemenKelas = document.getElementById('input-kelas');
+    let elemenMapel = document.getElementById('input-mapel');
+    let elemenGuruMapel = document.getElementById('input-guruMapel');
+    
+    tombolTambah.addEventListener('click', async function(e) {
+      e.preventDefault();
+      await tambahDaftarJadwalMataPelajaram(elemenHari.value, elemenJam.value, elemenWaktu.value, elemenKelas.value, elemenMapel.value, elemenguruMapel.value );
+      window.location.href = 'index.html'
+    })
+  </script>
 
 </body>
 
